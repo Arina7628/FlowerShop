@@ -6,6 +6,7 @@ import Home from '../Pages/Home';
 import About from '../Pages/About';
 import Contacts from '../Pages/Contacts';
 import Blog from '../Pages/Blog';
+import Auth from '../Pages/Auth'
 // <Navbar collapseOnSelect> отвечает за переключение OnSelected на false после срабатывания события
 export default class Header extends Component {
     render() {
@@ -29,6 +30,7 @@ export default class Header extends Component {
                       <Nav.Link href="/about" >About us</Nav.Link>
                       <Nav.Link href="/contacts" >Contacts(feddback form) </Nav.Link>
                       <Nav.Link href="/blog" >Blog</Nav.Link>
+                      <Nav.Link href="/auth" >auth</Nav.Link>
                   </Nav>
                   <Form inLine>
                       <FormControl
@@ -48,6 +50,7 @@ export default class Header extends Component {
               <Route exact path="/about" component={About} />
               <Route exact path="/contacts" component={Contacts} />
               <Route exact path="/blog" component={Blog} />
+              <Route exact path="/auth" component={Auth} />
           </Switch>
       </Router>
       </>
