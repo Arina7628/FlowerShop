@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { FormControl, Nav, Navbar, Container, Form, Button } from 'react-bootstrap';
+import {Toolbar, IconButton, Box} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
 import logo from './logo.png';
 import {BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from '../Pages/Home';
@@ -21,7 +23,7 @@ export default class Header extends Component {
                   src={logo}
                   height="30"
                   width="30"
-                  className="d-inline-block align-top"
+                  className="d-inline-block"
                   alt="Logo"
                   /> Flowers shop
               </Navbar.Brand>
@@ -68,8 +70,12 @@ function Greeting()
     {
       return <></>;
     }
-    return <><Nav.Link href="/Registration" >Registration</Nav.Link>
-            <Nav.Link href="/Authorization" >Authorization</Nav.Link></>
+    return                 <Form inLine>
+                              <Box mr={3}>
+                                  <Button color="inherit" href="/Authorization" variant="secondary">Log In</Button>
+                              </Box>
+                              <Button color="primary" variant="secondary" href="/Registration">Sign Up</Button>
+                              </Form>
 }
 
 function LogoutButton()
