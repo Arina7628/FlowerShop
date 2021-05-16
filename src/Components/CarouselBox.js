@@ -2,9 +2,16 @@ import React, { Component } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
 import flowersImg from '../assets/Rose.jpg'
 import dflowersImg from '../assets/Differents.jpg'
+import Chatik from '../Pages/Chatik'
+import {BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class CarouselBox extends Component {
     render() {
+        <Router>
+        <Switch>
+            <Route exact path="/Chatik" component={Chatik} />
+        </Switch>
+    </Router>
         return (
             <Carousel>
                 <Carousel.Item >
@@ -32,6 +39,7 @@ export default class CarouselBox extends Component {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
+            
 
         )
     }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CarouselBox from '../Components/CarouselBox';
 import { Card, Container,CardDeck,Button } from "react-bootstrap";
+import Chatik from '../Pages/Chatik'
 
 import {Typography} from '@material-ui/core';
 
@@ -140,7 +141,7 @@ export default class Home extends Component {
                                 </Card.Body>
                         </Card>
                     </CardDeck>
-                    <footer bg="blue">
+            <footer bg="blue">
             <Typography variant="h6" align="center" gutterBottom> FlowerShop </Typography>
             <Typography variant="h6" align="center" gutterBottom> © All right reserved </Typography>
             </footer>

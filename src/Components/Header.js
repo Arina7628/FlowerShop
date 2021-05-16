@@ -10,7 +10,7 @@ import Contacts from '../Pages/Contacts';
 import Registration from '../Pages/Registration';
 import Authorization from '../Pages/Authorization';
 import Blog from '../Pages/Blog'
-import Chatik from '../Pages/Chatik'
+import AppChat from '../AppChat'
 
 // <Navbar collapseOnSelect> отвечает за переключение OnSelected на false после срабатывания события
 export default class Header extends Component {
@@ -34,7 +34,7 @@ export default class Header extends Component {
                       <Nav.Link href="/" >Home</Nav.Link>
                       <Nav.Link href="/about" >About us</Nav.Link>
                       <Nav.Link href="/contacts" >Contacts(feedback form) </Nav.Link>
-                      <Nav.Link href="/Chatik" >Chatik </Nav.Link>
+                      <Button color="primary" variant="secondary" href="/AppChat">AppChat</Button>
                   </Nav>
                   <Form inLine>
                       <FormControl
@@ -58,7 +58,7 @@ export default class Header extends Component {
               <Route exact path="/blog" component={Blog} />
               <Route exact path="/Registration" component={Registration} />
               <Route exact path="/Authorization" component={Authorization} />
-              <Route exact path="/Chatik" component={Chatik} />
+              <Route exact path="/AppChat" component={AppChat} />
           </Switch>
       </Router>
       </>

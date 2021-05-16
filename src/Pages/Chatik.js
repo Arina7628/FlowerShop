@@ -1,33 +1,43 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import {Toolbar} from '@material-ui/core';
-import {Typography} from '@material-ui/core';
-import List from '@material-ui/core/List';
-import { ListItem, ListItemText } from '@material-ui/core';
-import Avatar from '@material-ui/core/Avatar';
+import axios from 'axios';
 
-const styles = theme => ({
-  appBar: {
-    position: 'right',
-    top: '280px',
-    width: `calc(60% - 320px)`,
-  },
-  chatsList: {
-    height: 'calc(100% - 56px)',
-    overflowY: 'scroll',
-  },
-});
+function Chatik({ onLogin }) {
+  const [roomId, setRoomId] = React.useState('');
+  const [userName, setUserName] = React.useState('');
+  const [isLoading, setLoading] = React.useState(false);
 
-const ChatHeader = ({ classes }) => (
-  <AppBar color="primary" className={classes.appBar}>
-    <Toolbar>
-      <Typography variant="title" color="inherit" noWrap>
-        Chat
-      </Typography>
-    </Toolbar>
-  </AppBar>
-);
+  const onEnter = async () => {
+    if (!roomId || !userName) {
+      return alert('Неверные данные');
+    }
+    const obj = {
+      roomId,
+      userName,
+    };
+    setLoading(true);
+    await axios.post('/rooms', obj);
+    onLogin(obj);
+  };
 
-  
-  export default withStyles(styles)(ChatHeader);
+  return (
+    <div className="join-block">
+      <input
+        type="text"
+        placeholder="Room ID"
+        value={roomId}
+        onChange={(e) => setRoomId(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Как к вам обращаться"
+        value={userName}
+        onChange={(e) => setUserName(e.target.value)}
+      />
+      <button disabled={isLoading} onClick={onEnter} className="btn btn-success">
+        {isLoading ? 'ВХОД...' : 'ВОЙТИ'}
+      </button>
+    </div>
+  );
+}
+
+export default Chatik;
