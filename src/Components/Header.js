@@ -34,7 +34,7 @@ export default class Header extends Component {
                       <Nav.Link href="/" >Home</Nav.Link>
                       <Nav.Link href="/about" >About us</Nav.Link>
                       <Nav.Link href="/contacts" >Contacts(feedback form) </Nav.Link>
-                      <Button color="primary" variant="secondary" href="/AppChat">AppChat</Button>
+                      <Button color="primary" variant="secondary" href="/AppChat">Chat</Button>
                   </Nav>
                   <Form inLine>
                       <FormControl
