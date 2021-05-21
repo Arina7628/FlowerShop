@@ -1,0 +1,8 @@
+figcaption{
+    position: absolute;
+    bottom: 0.75rem;
+    margin: 1.5rem;
+    color: green;
+    font-size: 1.5em;
+    font-weight: bolder;
+}

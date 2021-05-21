@@ -9,7 +9,19 @@ function CheckAuth()
     return false;
 }
 
+function AuthHeader()
+{
+  const token = localStorage.getItem('token')
+
+  if (token && token != null && token != '') {
+    return { Authorization: 'Bearer ' + token };
+  } else {
+    return {};
+  }
+}
+
 module.exports =
 {
     CheckAuth: CheckAuth,
+    AuthHeader: AuthHeader
 };
