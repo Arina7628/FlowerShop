@@ -15,8 +15,10 @@ export default class Cart extends Component {
         this.renderCart();
       }
 
-      renderCart = async() => {
-        try {
+      renderCart = async() => 
+      {
+        try 
+        {
           const res = await axios.get('https://localhost:44350/api/ShoppingCart', { headers: AuthHelper.AuthHeader() })
           const cart = res.data;
           this.setState({

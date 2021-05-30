@@ -56,7 +56,6 @@ export default class Flower extends Component {
                                 type="number"
                                 min = "1"
                                 max = {Product.unitsInStock}
-                                onChange={this.onChangeHandler}
                                 id = 'quantity'
                             />
                             <div></div>

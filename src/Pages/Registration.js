@@ -54,12 +54,7 @@ export default class Contacts extends Component {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="Password" placeholder="Enter Password" />
                     </Form.Group>
-
-                    <Form.Group controlId="passwordRepeat">
-                        <Form.Label>Repeat password</Form.Label>
-                        <Form.Control type="Password2" placeholder="Repeat password" />
-                    </Form.Group>
-                
+                    
                     <Button onClick = {this.handleSubmit} variant="primary">Сomplete registration</Button>
                 </Form>
             </Container>

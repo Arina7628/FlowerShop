@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import flowersImg from '../assets/Rose.jpg'
-import dflowersImg from '../assets/Differents.jpg'
 
 export default class CarouselBox extends Component {
     render() {

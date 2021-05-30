@@ -17,6 +17,10 @@ import axios from 'axios';
 import AuthHelper from '../Helpers/AuthHelper';
 import HistoryCheckout from '../Pages/History'
 import MyAccount from '../Pages/MyAccount'
+import Customers from '../Pages/Management/Customers'
+import CustomerOrders from '../Pages/Management/CustomerOrders'
+import AddProduct from '../Pages/AddProduct'
+import Admin from '../Pages/Admin'
 
 export default class Header extends Component {
     componentDidMount() {
@@ -54,9 +58,15 @@ export default class Header extends Component {
                     <Nav.Link href="/about" >About us</Nav.Link>
                     <Nav.Link href="/contacts" >Contacts(feedback form) </Nav.Link>
                     {!AuthHelper.CheckAuth() ? 
-                        <><Nav.Link href="/Registration" >Registration</Nav.Link>
-                        <Nav.Link href="/Authorization" >Authorization</Nav.Link></> :
-                        <></>}
+                        <>
+                          <Nav.Link href="/Registration" >Registration</Nav.Link>
+                          <Nav.Link href="/Authorization" >Authorization</Nav.Link>
+                        </> :
+                        <>
+                          <Nav.Link href="/Account" >Личный кабинет</Nav.Link>
+                        </>}
+                    {AuthHelper.IsManager() ? <Nav.Link href="/Management/Customers" >Management</Nav.Link> : <></>}
+                    {AuthHelper.IsAdministrator() ? <Nav.Link href="/Admin" >Admin panel</Nav.Link> : <></>}
                 </Nav>
                 {AuthHelper.CheckAuth() ?
                     <>
@@ -68,8 +78,7 @@ export default class Header extends Component {
                     </figure>
                     </> : <></>}
               </Navbar.Collapse>
-              {AuthHelper.CheckAuth() ?
-                <Button onClick = {Logout} variant="primary">Logout</Button> : <></>}
+              {AuthHelper.CheckAuth() ? <Button onClick = {Logout} variant="primary">Logout</Button> : <></>}
 
           </Container>
       </Navbar>
@@ -86,6 +95,10 @@ export default class Header extends Component {
               <Route exact path="/flower/:id(\d+)" component={Flower} />
               <Route exact path="/History" component={HistoryCheckout}/>
               <Route exact path="/Account" component={MyAccount}/>
+              <Route exact path="/Management/Customers" component={Customers}/>
+              <Route exact path="/Management/Customers/:id(\d+)/Orders" component={CustomerOrders}/>
+              <Route exact path="/Product" component={AddProduct}/>
+              <Route exact path="/Admin" component={Admin}/>
           </Switch>
       </Router>
       </>
@@ -96,5 +109,6 @@ export default class Header extends Component {
 function Logout()
 {
     delete localStorage['token']
+    delete localStorage['role']
     window.location.href = '/';
 }

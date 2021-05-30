@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CarouselBox from '../Components/CarouselBox';
-import { Card, Container,CardDeck,Button } from "react-bootstrap";
+import { Card, Container,CardDeck, Button } from "react-bootstrap";
 import {BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import Flower from '../Pages/Flower'
@@ -33,6 +33,7 @@ export default class Home extends Component {
                     <Card>
                             {Image({ src: flower.icon, height: 500, width: 500})}
                             <Card.Body>
+                                {AuthHelper.IsManager() ? <Button variant="primary" onClick={() => DeleteProduct(flower)}>Удалить продукт</Button> : <></>}
                                 <Card.Title>{flower.name}</Card.Title>
                                 <Card.Text>
                                 {flower.buyingPrice} rub/pieces
@@ -49,6 +50,7 @@ export default class Home extends Component {
                 <CarouselBox/>
                 <Container>
                     <h2 className="text-center m-4">Products</h2>
+                    {AuthHelper.IsManager() ? <button onClick={() => GoToAddProduct()}>Добавить продукт</button> : <></>}
                     {flowers}
                 </Container>
 
@@ -65,4 +67,23 @@ export default class Home extends Component {
 function GoToBuy(flower)
 {
   window.location.href = `/flower/${flower.id}`;
+}
+
+function GoToAddProduct()
+{
+  window.location.href = `/Product`;
+}
+
+async function DeleteProduct(flower)
+{
+  try
+  {
+    await axios.delete(`https://localhost:44350/api/Product/${flower.id}`, { headers: AuthHelper.AuthHeader() })
+
+  }
+  catch
+  {
+  }
+
+  window.location.reload();
 }

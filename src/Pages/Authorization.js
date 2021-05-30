@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Nav, Container } from 'react-bootstrap'
 import CheckAuth from '../Helpers/AuthHelper';
+import jwt_decode from "jwt-decode";
 
 function Authorization()
 {
@@ -12,8 +13,12 @@ function Authorization()
         if (request.status == 200)
         {
             let data = JSON.parse(request.response);
-            localStorage.setItem('token', data['access_token'])
-            console.log(data['access_token']);
+            let token = data['access_token']
+            var decoded = jwt_decode(token);
+            localStorage.setItem('token', token)
+            localStorage.setItem('role', decoded['role'])
+            localStorage.setItem('login', document.getElementById("login").value)
+            localStorage.setItem('password', document.getElementById("password").value)
             window.location.href = '/';
         }
         else
